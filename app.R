@@ -4,7 +4,7 @@ library(shiny)
 #require(htmltools)
 require(htmlwidgets)
 library(rcdimple) #devtools::install_github("timelyportfolio/rcdimple")
-library(curl)  #devtools::install_github("jeroenooms/curl")
+#library(curl)  #devtools::install_github("jeroenooms/curl")
 library(plyr)  # for round_any
 library(rCharts)
 library(ggvis)
@@ -66,8 +66,8 @@ lineChart <- function(data,agegrp,indicator){
                   data = selection,
                   type = "lineChart",
                   group = "sex",
-                  height = 250,
-                  width = 450 )    
+                  height = 410,
+                  width = 800 )    
     
     # Explicitly set year tick values for every year
     plot$xAxis(tickValues = do.call(seq, c(as.list(range(selection$year)), 1)),rotateLabels= -40,showMaxMin = "true")
@@ -95,8 +95,8 @@ lineChart <- function(data,agegrp,indicator){
                   data = selection,
                   type = "lineChart",
                   group = "sex",
-                  height = 250,
-                  width = 450 )    
+                  height = 410,
+                  width = 760 )    
     
     # Explicitly set year tick values for every year
     plot$xAxis(tickValues = do.call(seq, c(as.list(range(selection$year)), 1)),rotateLabels= -40,showMaxMin = "true")
@@ -126,7 +126,7 @@ heatmap <- function(data,indicator){
       ggvis(~Year, ~Age, fill = ~Rate) %>% 
       layer_rects(width = band(), height = band()) %>%
       add_relative_scales() %>%
-      set_options(height = 200, width = 410, keep_aspect = TRUE) %>% 
+      set_options(height = 300, width = 720, keep_aspect = TRUE) %>% 
       add_axis("y", title="")%>%
       scale_nominal("x", padding = 0, points = FALSE) %>%
       scale_nominal("y", padding = 0, points = FALSE) %>% 
@@ -147,7 +147,7 @@ heatmap <- function(data,indicator){
       ggvis(~Year, ~Age, fill = ~Count) %>% 
       layer_rects(width = band(), height = band()) %>%
       add_relative_scales() %>%
-      set_options(height = 200, width = 410, keep_aspect = TRUE) %>% 
+      set_options(height = 300, width = 720, keep_aspect = TRUE) %>% 
       add_axis("y", title="")%>%
       scale_nominal("x", padding = 0, points = FALSE) %>%
       scale_nominal("y", padding = 0, points = FALSE) %>% 
@@ -360,7 +360,7 @@ ui <- dashboardPage(
       # First tab content
       tabItem(tabName = "dashboard",
               fluidRow(
-                box(dimpleOutput("distPlot", height = 250)),
+                box(dimpleOutput("distPlot", height = 400)),
                 
                 box(showOutput("distPlot2","nvd3",add_lib=F))
               ),
