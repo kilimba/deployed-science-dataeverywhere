@@ -126,7 +126,7 @@ heatmap <- function(data,indicator){
       ggvis(~Year, ~Age, fill = ~Rate) %>% 
       layer_rects(width = band(), height = band()) %>%
       add_relative_scales() %>%
-      set_options(height = 300, width = 720, keep_aspect = TRUE) %>% 
+      set_options(height = 350, width = 720, keep_aspect = TRUE) %>% 
       add_axis("y", title="")%>%
       scale_nominal("x", padding = 0, points = FALSE) %>%
       scale_nominal("y", padding = 0, points = FALSE) %>% 
@@ -147,7 +147,7 @@ heatmap <- function(data,indicator){
       ggvis(~Year, ~Age, fill = ~Count) %>% 
       layer_rects(width = band(), height = band()) %>%
       add_relative_scales() %>%
-      set_options(height = 300, width = 720, keep_aspect = TRUE) %>% 
+      set_options(height = 350, width = 720, keep_aspect = TRUE) %>% 
       add_axis("y", title="")%>%
       scale_nominal("x", padding = 0, points = FALSE) %>%
       scale_nominal("y", padding = 0, points = FALSE) %>% 
